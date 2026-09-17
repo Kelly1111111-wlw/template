@@ -1,16 +1,20 @@
 ---
-title: "My Final Project Template"
-author: Your name here
-subtitle: Subtitle here if desired
-date: today
+title: "Seasonal Temperature Trends and Urbanization Relationships around Buffalo, NY (2001–2025)"
+author: Linwei Wu
+date: 09/16/2026
 date-format: long
 ---
 
 # Introduction
+  Rising temperatures are a major concern under global climate change, but
+warming can also be influenced by local factors. Urbanization is one such factor, as
+the expansion of impervious surfaces such as roads, buildings, and parking lots may
+affect local temperatures. The five-county study area around Buffalo contains
+different levels of development, providing an opportunity to examine the relationship
+between warming and urbanization. This project will analyze temperature trends from
+2001 to 2025 and investigate whether they are associated with changes in
+urbanization.
 
-\[\~ 200 words\]
-
-Clearly stated background and questions / hypotheses / problems being addressed. Sets up the analysis in an interesting and compelling way. Include figures if you like.
 
 # Materials and methods
 
