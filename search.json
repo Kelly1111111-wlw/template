@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Seasonal Temperature Trends and Urbanization Relationships around Buffalo, NY (2001–2025)",
+    "section": "",
+    "text": "Rising temperatures are a major concern under global climate change, but warming can also be influenced by local factors. Urbanization is one such factor, as the expansion of impervious surfaces such as roads, buildings, and parking lots may affect local temperatures. The five-county study area around Buffalo contains different levels of development, providing an opportunity to examine the relationship between warming and urbanization. This project will analyze temperature trends from 2001 to 2025 and investigate whether they are associated with changes in urbanization."
+  },
+  {
+    "objectID": "index.html#download-and-clean-all-required-data",
+    "href": "index.html#download-and-clean-all-required-data",
+    "title": "Seasonal Temperature Trends and Urbanization Relationships around Buffalo, NY (2001–2025)",
+    "section": "Download and clean all required data",
+    "text": "Download and clean all required data\n\nn=20\ndata=data.frame(x=runif(n,-180,180),\n                y=runif(n,-60,60),\n                size = runif(n, 5, 20),\n                category = factor(\n                  sample(letters[1:5], n, replace = TRUE)\n                  ),\n                value = rnorm(n))\n\ndata %&gt;% \n  slice(1:10) %&gt;% #show only 1:n rows\n  kable(digits=2,align=\"c\")%&gt;% #make table and round to two digits\n  kable_styling(bootstrap_options = \n                  c(\"striped\", \"hover\", \"condensed\", \"responsive\")) #apply other formatting\n\n\n\n\nx\ny\nsize\ncategory\nvalue\n\n\n\n\n9.08\n-10.59\n13.69\ne\n-0.49\n\n\n152.49\n-1.09\n17.78\nb\n0.92\n\n\n-67.25\n21.22\n6.09\nb\n-2.35\n\n\n134.07\n24.67\n9.60\ne\n-0.02\n\n\n105.09\n-18.48\n13.01\nc\n-0.49\n\n\n179.17\n-59.96\n19.83\ne\n-0.21\n\n\n-139.85\n37.34\n13.44\nb\n0.42\n\n\n136.65\n-46.12\n18.85\ne\n1.18\n\n\n136.68\n-25.32\n11.93\nb\n0.59\n\n\n-146.67\n-34.39\n16.61\ne\n-1.54\n\n\n\n\nAdd any additional processing steps here."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "data/Readme.html",
+    "href": "data/Readme.html",
+    "title": "Data Folder",
+    "section": "",
+    "text": "Data Folder\nPlace any data needed by your analysis in this folder. Please do not store large files here. Then read in any data using the ‘data’ path. For example, read_csv(\"data/data.csv\")."
+  }
+]
