@@ -3,6 +3,9 @@ title: "Seasonal Temperature Trends and Urbanization Relationships around Buffal
 author: Linwei Wu
 date: 11/01/2026
 date-format: long
+format:
+  html:
+    css: styles.css
 ---
 
 # Introduction
@@ -24,47 +27,7 @@ For the NLCD data, I created a 2 km buffer around each weather station and calcu
 
 Finally, I combined the temperature trends and impervious surface changes using station IDs to examine their relationships.
 
-```{r}
-x=3+4
-```
-
-Refer to output in your narrative like this: x=`r x` .
-
-Load any required packages in a code chunk (you may need to install some packages):
-
-```{r, message=F, warning=F}
-library(tidyverse)
-library(leaflet)
-library(kableExtra)
-library(htmlwidgets)
-library(widgetframe)
-knitr::opts_chunk$set(widgetframe_widgets_dir = 'widgets' ) 
-knitr::opts_chunk$set(cache=TRUE)  # cache the results for quick compiling
-```
-
-## Download and clean all required data
-
-```{r}
-n=20
-data=data.frame(x=runif(n,-180,180),
-                y=runif(n,-60,60),
-                size = runif(n, 5, 20),
-                category = factor(
-                  sample(letters[1:5], n, replace = TRUE)
-                  ),
-                value = rnorm(n))
-```
-
-```{r, results='asis'}
-data %>% 
-  slice(1:10) %>% #show only 1:n rows
-  kable(digits=2,align="c")%>% #make table and round to two digits
-  kable_styling(bootstrap_options = 
-                  c("striped", "hover", "condensed", "responsive")) #apply other formatting
-```
-
-Add any additional processing steps here.
-
+(Python was used to download and clean the data, calculate temperature trends, and process impervious surface data. R was used to analyze the relationships and create figures. All scripts are organized in the code/ folder, and the Readme.txt file explains the purpose and order of each script.)
 # Results
 ![Figure 1. Average temperature trends across four representative months.](figures/Figure1_TAVG_Trends.png)
 Figure 1 shows the average temperature (TAVG) trends for four representative months from 2001 to 2025. Most weather stations showed warming trends, but the warming rates were different across months. October had the strongest warming, while April showed the weakest warming.
@@ -80,7 +43,6 @@ Figure 4 shows the relationship between impervious surface changes and TAVG tren
 
 ![Figure 5. Comparison of TMIN and TMAX trends.](figures/Figure5_TMIN_vs_TMAX_Trends.png)
 Figure 5 compares TMIN and TMAX trends across four months. In January and April, TMIN increased faster than TMAX at most stations. July showed mixed results, while October showed the opposite pattern. The circle sizes also show impervious surface changes, but there is no clear pattern between these changes and the differences in TMIN and TMAX trends.
-
 # Conclusions
 This project examined temperature trends and urbanization changes in five counties in Western New York from 2001 to 2025. The results showed that most weather stations experienced warming during the four selected months. However, the warming rates were different across months and locations.
 
@@ -89,7 +51,6 @@ I expected that weather stations with greater increases in impervious surfaces m
 The comparison between TMIN and TMAX showed that minimum temperatures increased faster in January and April at most stations, while maximum temperatures increased faster in October. This suggests that daytime and nighttime temperature trends may be different across months.
 
 One limitation of this study is the small number of weather stations. In future work, I would like to include more stations and consider other environmental factors. I also plan to use more land cover data from different years to better understand the relationship between urbanization and local temperature changes.
-
 # References
 1. National Oceanic and Atmospheric Administration (NOAA). (n.d.). Global Historical Climatology Network-Daily (GHCN-Daily). National Centers for Environmental Information. https://www.ncei.noaa.gov/pub/data/ghcn/daily/
 
