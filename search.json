@@ -1,24 +1,24 @@
 [
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Seasonal Temperature Trends and Urbanization Relationships around Buffalo, NY(2001–2025)",
+    "section": "",
+    "text": "Rising temperatures are a major concern under global climate change, but warming can also be influenced by local factors. Urbanization is one such factor, as the expansion of impervious surfaces such as roads, buildings, and parking lots may affect local temperatures. These surfaces can absorb and store heat, which may make urban areas warmer than surrounding rural areas. Western New York is an interesting area for studying these changes because it includes both urban and rural areas. The study area includes five counties in Western New York: Erie, Niagara, Chautauqua, Cattaraugus, and Allegany. These counties have different levels of development, providing an opportunity to examine the relationship between warming and urbanization. Temperature changes may also vary across different months, and minimum and maximum temperatures may not increase at the same rate. This project examines temperature trends in five counties in Western New York from 2001 to 2025. It focuses on three research questions: 1. How did temperature trends change across four representative months: January, April, July, and October? 2. Did weather stations with greater increases in impervious surfaces show stronger warming trends? 3. How did minimum temperature (TMIN) trends compare with maximum temperature (TMAX) trends across different months, and how did these differences vary with impervious surface changes?"
+  },
+  {
+    "objectID": "index.html#download-and-clean-all-required-data",
+    "href": "index.html#download-and-clean-all-required-data",
+    "title": "Seasonal Temperature Trends and Urbanization Relationships around Buffalo, NY(2001–2025)",
+    "section": "Download and clean all required data",
+    "text": "Download and clean all required data\n\nn=20\ndata=data.frame(x=runif(n,-180,180),\n                y=runif(n,-60,60),\n                size = runif(n, 5, 20),\n                category = factor(\n                  sample(letters[1:5], n, replace = TRUE)\n                  ),\n                value = rnorm(n))\n\ndata %&gt;% \n  slice(1:10) %&gt;% #show only 1:n rows\n  kable(digits=2,align=\"c\")%&gt;% #make table and round to two digits\n  kable_styling(bootstrap_options = \n                  c(\"striped\", \"hover\", \"condensed\", \"responsive\")) #apply other formatting\n\n\n\n\nx\ny\nsize\ncategory\nvalue\n\n\n\n\n-56.78\n20.25\n13.47\nd\n-0.77\n\n\n-16.94\n-8.31\n19.12\nd\n-0.05\n\n\n-39.98\n-21.33\n15.37\nb\n-1.65\n\n\n-66.09\n-18.52\n16.12\nc\n1.25\n\n\n-0.20\n50.04\n15.61\nd\n1.29\n\n\n-74.94\n-58.24\n12.01\ne\n0.75\n\n\n-0.25\n14.20\n14.04\nd\n-0.38\n\n\n-142.09\n25.70\n13.95\nd\n-0.94\n\n\n127.19\n-24.68\n7.04\nc\n-2.54\n\n\n-28.31\n-48.65\n6.62\nb\n1.81\n\n\n\n\nAdd any additional processing steps here."
+  },
+  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Seasonal Temperature Trends and Urbanization Relationships around Buffalo, NY (2001–2025)",
-    "section": "",
-    "text": "Rising temperatures are a major concern under global climate change, but warming can also be influenced by local factors. Urbanization is one such factor, as the expansion of impervious surfaces such as roads, buildings, and parking lots may affect local temperatures. The five-county study area around Buffalo contains different levels of development, providing an opportunity to examine the relationship between warming and urbanization. This project will analyze temperature trends from 2001 to 2025 and investigate whether they are associated with changes in urbanization."
-  },
-  {
-    "objectID": "index.html#download-and-clean-all-required-data",
-    "href": "index.html#download-and-clean-all-required-data",
-    "title": "Seasonal Temperature Trends and Urbanization Relationships around Buffalo, NY (2001–2025)",
-    "section": "Download and clean all required data",
-    "text": "Download and clean all required data\n\nn=20\ndata=data.frame(x=runif(n,-180,180),\n                y=runif(n,-60,60),\n                size = runif(n, 5, 20),\n                category = factor(\n                  sample(letters[1:5], n, replace = TRUE)\n                  ),\n                value = rnorm(n))\n\ndata %&gt;% \n  slice(1:10) %&gt;% #show only 1:n rows\n  kable(digits=2,align=\"c\")%&gt;% #make table and round to two digits\n  kable_styling(bootstrap_options = \n                  c(\"striped\", \"hover\", \"condensed\", \"responsive\")) #apply other formatting\n\n\n\n\nx\ny\nsize\ncategory\nvalue\n\n\n\n\n-145.99\n-11.20\n18.20\nb\n-0.93\n\n\n-24.11\n-16.88\n11.84\nc\n0.88\n\n\n19.40\n-36.70\n13.09\na\n-0.37\n\n\n107.50\n27.79\n19.75\nb\n-0.06\n\n\n0.88\n59.42\n17.95\na\n-1.62\n\n\n8.08\n41.24\n10.09\na\n-1.19\n\n\n96.75\n-8.60\n14.04\nb\n1.55\n\n\n-114.55\n-51.15\n6.49\nb\n2.07\n\n\n-43.04\n55.44\n12.88\na\n-0.96\n\n\n134.36\n54.83\n17.73\nb\n-0.71\n\n\n\n\nAdd any additional processing steps here."
   },
   {
     "objectID": "data/Readme.html",
