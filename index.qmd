@@ -35,6 +35,29 @@ Finally, I combined the temperature trends and impervious surface changes using 
 
 (Python was used to download and clean the data, calculate temperature trends, and process impervious surface data. R was used to analyze the relationships and create figures. All scripts are organized in the code/ folder, and the Readme.txt file explains the purpose and order of each script.)
 
+# Data
+
+The temperature and impervious surface datasets were processed using Python. The processed CSV files are stored in the `data/processed/` folder. Here I use R to load and combine these datasets for further analysis.
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+
+# Load temperature trends from NOAA
+temp <- read_csv("data/processed/station_temperature_trends.csv")
+
+# Load impervious surface data from NLCD
+imp <- read_csv("data/processed/station_impervious_change.csv")
+
+# Merge the two datasets using station ID
+df <- inner_join(temp, imp, by = "station_id")
+
+# Display the first six rows
+head(df)
+```
+
 # Results
 
 ![Figure 1. Average temperature trends across four representative months.](figures/Figure1_TAVG_Trends.png)
