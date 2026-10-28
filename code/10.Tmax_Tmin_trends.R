@@ -2,6 +2,8 @@
 # that minimum temperatures increased faster than maximum temperatures. 
 # July shows mixed results, while October shows the opposite pattern, with
 # TMAX increasing faster than TMIN at most stations.
+# There is no clear relationship between impervious surface change and the
+# difference in temperature trends.
 library(tidyverse)
 
 # paths
@@ -16,7 +18,7 @@ df <- read_csv(file.path(DATA, "temperature_impervious_merged.csv"))
 # select TMIN and TMAX
 temp_compare <- df %>%
   filter(variable %in% c("TMIN", "TMAX")) %>%
-  select(station_id, station_name, month, variable, slope_c_per_decade) %>%
+  select(station_id, station_name, month, variable, slope_c_per_decade, impervious_change) %>%
   pivot_wider(names_from = variable, values_from = slope_c_per_decade) %>%
   mutate(
     month_name = factor(
@@ -34,7 +36,7 @@ p5 <- ggplot(temp_compare, aes(x = TMAX, y = TMIN)) +
   # reference line: TMIN = TMAX
   geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray50", linewidth = 0.7) +
   # weather stations
-  geom_point(aes(color = trend_difference), size = 3.5, alpha = 0.9) +
+  geom_point(aes(color = trend_difference, size = impervious_change), alpha = 0.9) +
   # 4 representative months
   facet_wrap(~month_name, ncol = 2) +
   # Color represents TMIN - TMAX(trend)
@@ -44,6 +46,10 @@ p5 <- ggplot(temp_compare, aes(x = TMAX, y = TMIN)) +
     high = "#D73027",
     midpoint = 0,
     name = "TMIN - TMAX\n(°C/decade)"
+  ) +
+  scale_size_continuous(
+    range = c(2, 8),
+    name = "Impervious Change\n(percentage points)"
   ) +
   labs(
     title = "Comparison of TMIN and TMAX Temperature Trends",
