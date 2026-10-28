@@ -112,23 +112,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
-<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
-<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
-<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
-<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
-<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
-<script src="site_libs/leaflet-binding-2.2.2/leaflet.js"></script>
-<link href="site_libs/dygraphs-1.1.1/dygraph.css" rel="stylesheet">
-<script src="site_libs/dygraphs-1.1.1/dygraph-combined.js"></script>
-<script src="site_libs/dygraphs-1.1.1/shapes.js"></script>
-<script src="site_libs/moment-2.8.4/moment.js"></script>
-<script src="site_libs/moment-timezone-0.2.5/moment-timezone-with-data.js"></script>
-<script src="site_libs/moment-fquarter-1.0.0/moment-fquarter.min.js"></script>
-<script src="site_libs/dygraphs-binding-1.1.1.6/dygraphs.js"></script>
 
 
 </head>
@@ -206,11 +189,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Rising temperatures are a major concern under global climate change, but warming can also be influenced by local factors. Urbanization is one such factor, as the expansion of impervious surfaces such as roads, buildings, and parking lots may affect local temperatures. These surfaces can absorb and store heat, which may make urban areas warmer than surrounding rural areas. Western New York is an interesting area for studying these changes because it includes both urban and rural areas. The study area includes five counties in Western New York: Erie, Niagara, Chautauqua, Cattaraugus, and Allegany. These counties have different levels of development, providing an opportunity to examine the relationship between warming and urbanization. Temperature changes may also vary across different months, and minimum and maximum temperatures may not increase at the same rate. This project examines temperature trends in five counties in Western New York from 2001 to 2025. It focuses on three research questions: 1. How did temperature trends change across four representative months: January, April, July, and October? 2. Did weather stations with greater increases in impervious surfaces show stronger warming trends? 3. How did minimum temperature (TMIN) trends compare with maximum temperature (TMAX) trends across different months, and how did these differences vary with impervious surface changes?</p>
-</section>
-<section id="materials-and-methods" class="level1">
-<h1>Materials and methods</h1>
-<p>This project uses three main datasets: temperature, impervious surface, and county boundary data. Daily temperature records from 2001 to 2025 were downloaded from the NOAA Global Historical Climatology Network-Daily (GHCN-Daily). County boundaries were obtained from the U.S. Census Bureau to select weather stations within the five counties in Western New York. Impervious surface data for 2001 and 2025 were obtained from the National Land Cover Database (NLCD). For the temperature data, I first cleaned the daily records and removed missing or invalid values. Daily maximum temperature (TMAX) and minimum temperature (TMIN) were used to calculate average temperature (TAVG). The daily data were then converted into monthly averages. I kept months with at least 80% valid daily observations and stations with at least 95% monthly completeness. January, April, July, and October were selected to represent winter, spring, summer, and fall. Linear regression was used to calculate temperature trends for each station and month from 2001 to 2025. For the NLCD data, I created a 2 km buffer around each weather station and calculated the mean impervious surface percentage for both years. The difference between 2025 and 2001 was used to measure urbanization change. Finally, I combined the temperature trends and impervious surface changes using station IDs to examine their relationships.</p>
+<p>Rising temperatures are a major concern under global climate change, but warming can also be influenced by local factors. Urbanization is one such factor, as the expansion of impervious surfaces such as roads, buildings, and parking lots may affect local temperatures. These surfaces can absorb and store heat, which may make urban areas warmer than surrounding rural areas.</p>
+<p>Western New York is an interesting area for studying these changes because it includes both urban and rural areas. The study area includes five counties in Western New York: Erie, Niagara, Chautauqua, Cattaraugus, and Allegany. These counties have different levels of development, providing an opportunity to examine the relationship between warming and urbanization. Temperature changes may also vary across different months, and minimum and maximum temperatures may not increase at the same rate.</p>
+<p>This project examines temperature trends in five counties in Western New York from 2001 to 2025. It focuses on three research questions: 1. How did temperature trends change across four representative months: January, April, July, and October? 2. Did weather stations with greater increases in impervious surfaces show stronger warming trends? 3. How did minimum temperature (TMIN) trends compare with maximum temperature (TMAX) trends across different months, and how did these differences vary with impervious surface changes? # Materials and methods This project uses three main datasets: temperature, impervious surface, and county boundary data. Daily temperature records from 2001 to 2025 were downloaded from the NOAA Global Historical Climatology Network-Daily (GHCN-Daily). County boundaries were obtained from the U.S. Census Bureau to select weather stations within the five counties in Western New York. Impervious surface data for 2001 and 2025 were obtained from the National Land Cover Database (NLCD).</p>
+<p>For the temperature data, I first cleaned the daily records and removed missing or invalid values. Daily maximum temperature (TMAX) and minimum temperature (TMIN) were used to calculate average temperature (TAVG). The daily data were then converted into monthly averages. I kept months with at least 80% valid daily observations and stations with at least 95% monthly completeness. January, April, July, and October were selected to represent winter, spring, summer, and fall. Linear regression was used to calculate temperature trends for each station and month from 2001 to 2025.</p>
+<p>For the NLCD data, I created a 2 km buffer around each weather station and calculated the mean impervious surface percentage for both years. The difference between 2025 and 2001 was used to measure urbanization change.</p>
+<p>Finally, I combined the temperature trends and impervious surface changes using station IDs to examine their relationships.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="dv">3</span><span class="sc">+</span><span class="dv">4</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -255,74 +239,74 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">-56.78</td>
-<td style="text-align: center;">20.25</td>
-<td style="text-align: center;">13.47</td>
-<td style="text-align: center;">d</td>
-<td style="text-align: center;">-0.77</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-16.94</td>
-<td style="text-align: center;">-8.31</td>
-<td style="text-align: center;">19.12</td>
-<td style="text-align: center;">d</td>
-<td style="text-align: center;">-0.05</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-39.98</td>
-<td style="text-align: center;">-21.33</td>
-<td style="text-align: center;">15.37</td>
-<td style="text-align: center;">b</td>
-<td style="text-align: center;">-1.65</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-66.09</td>
-<td style="text-align: center;">-18.52</td>
-<td style="text-align: center;">16.12</td>
+<td style="text-align: center;">-101.51</td>
+<td style="text-align: center;">-55.82</td>
+<td style="text-align: center;">19.03</td>
 <td style="text-align: center;">c</td>
-<td style="text-align: center;">1.25</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">-0.20</td>
-<td style="text-align: center;">50.04</td>
-<td style="text-align: center;">15.61</td>
-<td style="text-align: center;">d</td>
-<td style="text-align: center;">1.29</td>
+<td style="text-align: center;">-0.28</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-74.94</td>
-<td style="text-align: center;">-58.24</td>
-<td style="text-align: center;">12.01</td>
-<td style="text-align: center;">e</td>
-<td style="text-align: center;">0.75</td>
-</tr>
-<tr class="odd">
+<td style="text-align: center;">-177.83</td>
+<td style="text-align: center;">-45.03</td>
+<td style="text-align: center;">16.74</td>
+<td style="text-align: center;">b</td>
 <td style="text-align: center;">-0.25</td>
-<td style="text-align: center;">14.20</td>
-<td style="text-align: center;">14.04</td>
-<td style="text-align: center;">d</td>
-<td style="text-align: center;">-0.38</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">-142.09</td>
-<td style="text-align: center;">25.70</td>
-<td style="text-align: center;">13.95</td>
-<td style="text-align: center;">d</td>
-<td style="text-align: center;">-0.94</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">127.19</td>
-<td style="text-align: center;">-24.68</td>
-<td style="text-align: center;">7.04</td>
-<td style="text-align: center;">c</td>
-<td style="text-align: center;">-2.54</td>
+<td style="text-align: center;">93.31</td>
+<td style="text-align: center;">-11.57</td>
+<td style="text-align: center;">8.14</td>
+<td style="text-align: center;">b</td>
+<td style="text-align: center;">0.02</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">-28.31</td>
-<td style="text-align: center;">-48.65</td>
-<td style="text-align: center;">6.62</td>
+<td style="text-align: center;">1.18</td>
+<td style="text-align: center;">36.59</td>
+<td style="text-align: center;">10.47</td>
+<td style="text-align: center;">e</td>
+<td style="text-align: center;">-1.42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-74.39</td>
+<td style="text-align: center;">48.67</td>
+<td style="text-align: center;">19.06</td>
 <td style="text-align: center;">b</td>
-<td style="text-align: center;">1.81</td>
+<td style="text-align: center;">-0.68</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-123.16</td>
+<td style="text-align: center;">-51.90</td>
+<td style="text-align: center;">5.94</td>
+<td style="text-align: center;">e</td>
+<td style="text-align: center;">-0.85</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">-109.31</td>
+<td style="text-align: center;">-26.37</td>
+<td style="text-align: center;">7.58</td>
+<td style="text-align: center;">b</td>
+<td style="text-align: center;">-1.42</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">171.60</td>
+<td style="text-align: center;">21.93</td>
+<td style="text-align: center;">16.91</td>
+<td style="text-align: center;">a</td>
+<td style="text-align: center;">-0.41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">118.40</td>
+<td style="text-align: center;">0.03</td>
+<td style="text-align: center;">6.78</td>
+<td style="text-align: center;">e</td>
+<td style="text-align: center;">0.18</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">-66.62</td>
+<td style="text-align: center;">11.67</td>
+<td style="text-align: center;">16.10</td>
+<td style="text-align: center;">a</td>
+<td style="text-align: center;">-0.47</td>
 </tr>
 </tbody>
 </table>
@@ -332,54 +316,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
-<p>[~200 words]</p>
-<p>Tables and figures (maps and other graphics) are carefully planned to convey the results of your analysis. Intense exploration and evidence of many trials and failures. The author looked at the data in many different ways before coming to the final presentation of the data.</p>
-<p>Show tables, plots, etc. and describe them.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">leaflet</span>(data) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addCircleMarkers</span>(<span class="sc">~</span>x, <span class="sc">~</span>y, <span class="at">radius =</span> <span class="sc">~</span>size,<span class="at">color =</span> <span class="sc">~</span><span class="fu">as.factor</span>(category)) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">addPopups</span>(<span class="sc">~</span>x[<span class="dv">2</span>], <span class="sc">~</span>y[<span class="dv">2</span>], <span class="st">"Random popup"</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>m  <span class="co"># a map with the default OSM tile layer</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-061c7d3ac26d7f1ee3ca" style="width:100%;height:325px;"></div>
-<script type="application/json" data-for="htmlwidget-061c7d3ac26d7f1ee3ca">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircleMarkers","args":[[20.25073458440602,-8.307106252759695,-21.33434515446424,-18.51706906221807,50.0406426563859,-58.23852117173374,14.20171304605901,25.7009953726083,-24.67699779197574,-48.6462980043143,-10.3736085165292,-26.61612113937736,6.329458840191364,10.25495700538158,-14.34510860592127,-24.80511381290853,-2.015666775405407,56.69334556907415,-39.08785756677389,25.37889752537012],[-56.78224573843181,-16.94487322121859,-39.97594423592091,-66.08752962201834,-0.1967535261064768,-74.94339287281036,-0.2496526390314102,-142.0856468752027,127.1873552072793,-28.31112376414239,26.88947428017855,108.8693410065025,158.401494724676,-105.8948193211108,64.60835765115917,-127.9654571693391,-80.75812328606844,120.6486716028303,-83.59035504050553,111.8434081412852],[13.47091330448166,19.11828896962106,15.37491713068448,16.12100220285356,15.60601520119235,12.0078518090304,14.03985402663238,13.9518596441485,7.04121652408503,6.620591528480873,19.24058303236961,8.531096212100238,5.219409517012537,6.135343355126679,19.10452819662169,14.15700972429477,12.70988406380638,7.278233849210665,19.97795357601717,17.21267669810914],null,null,{"interactive":true,"className":"","stroke":true,"color":["d","d","b","c","d","e","d","d","c","b","a","b","b","d","c","c","c","d","b","d"],"weight":5,"opacity":0.5,"fill":true,"fillColor":["d","d","b","c","d","e","d","d","c","b","a","b","b","d","c","c","c","d","b","d"],"fillOpacity":0.2},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addPopups","args":[-8.307106252759695,-16.94487322121859,"Random popup",null,null,{"maxWidth":300,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]}],"limits":{"lat":[-58.23852117173374,56.69334556907415],"lng":[-142.0856468752027,158.401494724676]}},"evals":[],"jsHooks":[]}</script>
-<p>Map of completely random data</p>
-</div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>x,<span class="at">y=</span>y,<span class="at">col=</span>category))<span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="dygraphs-example" class="level3">
-<h3 class="anchored" data-anchor-id="dygraphs-example">Dygraphs Example</h3>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dygraphs)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dygraph</span>(nhtemp, <span class="at">main =</span> <span class="st">"New Haven Temperatures"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dyRangeSelector</span>(<span class="at">dateWindow =</span> <span class="fu">c</span>(<span class="st">"1920-01-01"</span>, <span class="st">"1960-01-01"</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div class="dygraphs html-widget html-fill-item" id="htmlwidget-0f5e190630e0d54ffcd9" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-0f5e190630e0d54ffcd9">{"x":{"attrs":{"title":"New Haven Temperatures","labels":["year","V1"],"legend":"auto","retainDateWindow":false,"axes":{"x":{"pixelsPerLabel":60}},"showRangeSelector":true,"dateWindow":["1920-01-01T00:00:00.000Z","1960-01-01T00:00:00.000Z"],"rangeSelectorHeight":40,"rangeSelectorPlotFillColor":" #A7B1C4","rangeSelectorPlotStrokeColor":"#808FAB","interactionModel":"Dygraph.Interaction.defaultModel"},"scale":"yearly","annotations":[],"shadings":[],"events":[],"format":"date","data":[["1912-01-01T00:00:00.000Z","1913-01-01T00:00:00.000Z","1914-01-01T00:00:00.000Z","1915-01-01T00:00:00.000Z","1916-01-01T00:00:00.000Z","1917-01-01T00:00:00.000Z","1918-01-01T00:00:00.000Z","1919-01-01T00:00:00.000Z","1920-01-01T00:00:00.000Z","1921-01-01T00:00:00.000Z","1922-01-01T00:00:00.000Z","1923-01-01T00:00:00.000Z","1924-01-01T00:00:00.000Z","1925-01-01T00:00:00.000Z","1926-01-01T00:00:00.000Z","1927-01-01T00:00:00.000Z","1928-01-01T00:00:00.000Z","1929-01-01T00:00:00.000Z","1930-01-01T00:00:00.000Z","1931-01-01T00:00:00.000Z","1932-01-01T00:00:00.000Z","1933-01-01T00:00:00.000Z","1934-01-01T00:00:00.000Z","1935-01-01T00:00:00.000Z","1936-01-01T00:00:00.000Z","1937-01-01T00:00:00.000Z","1938-01-01T00:00:00.000Z","1939-01-01T00:00:00.000Z","1940-01-01T00:00:00.000Z","1941-01-01T00:00:00.000Z","1942-01-01T00:00:00.000Z","1943-01-01T00:00:00.000Z","1944-01-01T00:00:00.000Z","1945-01-01T00:00:00.000Z","1946-01-01T00:00:00.000Z","1947-01-01T00:00:00.000Z","1948-01-01T00:00:00.000Z","1949-01-01T00:00:00.000Z","1950-01-01T00:00:00.000Z","1951-01-01T00:00:00.000Z","1952-01-01T00:00:00.000Z","1953-01-01T00:00:00.000Z","1954-01-01T00:00:00.000Z","1955-01-01T00:00:00.000Z","1956-01-01T00:00:00.000Z","1957-01-01T00:00:00.000Z","1958-01-01T00:00:00.000Z","1959-01-01T00:00:00.000Z","1960-01-01T00:00:00.000Z","1961-01-01T00:00:00.000Z","1962-01-01T00:00:00.000Z","1963-01-01T00:00:00.000Z","1964-01-01T00:00:00.000Z","1965-01-01T00:00:00.000Z","1966-01-01T00:00:00.000Z","1967-01-01T00:00:00.000Z","1968-01-01T00:00:00.000Z","1969-01-01T00:00:00.000Z","1970-01-01T00:00:00.000Z","1971-01-01T00:00:00.000Z"],[49.9,52.3,49.4,51.1,49.4,47.9,49.8,50.9,49.3,51.9,50.8,49.6,49.3,50.6,48.4,50.7,50.9,50.6,51.5,52.8,51.8,51.1,49.8,50.2,50.4,51.6,51.8,50.9,48.8,51.7,51,50.6,51.7,51.5,52.1,51.3,51,54,51.4,52.7,53.1,54.6,52,52,50.9,52.6,50.2,52.6,51.6,51.9,50.5,50.9,51.7,51.4,51.7,50.8,51.9,51.8,51.9,53]]},"evals":["attrs.interactionModel"],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
+<p><img src="figures/Figure1_TAVG_Trends.png" class="img-fluid" alt="Figure 1. Average temperature trends across four representative months."> Figure 1 shows the average temperature (TAVG) trends for four representative months from 2001 to 2025. Most weather stations showed warming trends, but the warming rates were different across months. October had the strongest warming, while April showed the weakest warming.</p>
+<p><img src="figures/Figure2_Temperature_Urbanization_Map.png" class="img-fluid" alt="Figure 2. Spatial temperature trends and impervious surface changes."> Figure 2 shows the spatial distribution of temperature trends and impervious surface changes across Western New York. The colors represent temperature trends, and the circle sizes represent impervious surface changes. The results show that temperature trends and urbanization changes varied between stations.</p>
+<p><img src="figures/Figure3_Impervious_Change.png" class="img-fluid" alt="Figure 3. Impervious surface percentages in 2001 and 2025."> Figure 3 compares impervious surface percentages in 2001 and 2025. Some stations had higher impervious surface percentages than others, and the changes were different across locations.</p>
+<p><img src="figures/Figure4_Regression_Urban_Temperature.png" class="img-fluid" alt="Figure 4. Relationship between impervious surface changes and temperature trends."> Figure 4 shows the relationship between impervious surface changes and TAVG trends. January and April showed almost no relationship. July showed a negative relationship (r = -0.735, p = 0.024), while October also showed a negative but weaker relationship. Overall, greater increases in impervious surfaces were not always associated with stronger warming.</p>
+<p><img src="figures/Figure5_TMIN_vs_TMAX_Trends.png" class="img-fluid" alt="Figure 5. Comparison of TMIN and TMAX trends."> Figure 5 compares TMIN and TMAX trends across four months. In January and April, TMIN increased faster than TMAX at most stations. July showed mixed results, while October showed the opposite pattern. The circle sizes also show impervious surface changes, but there is no clear pattern between these changes and the differences in TMIN and TMAX trends.</p>
 </section>
 <section id="conclusions" class="level1">
 <h1>Conclusions</h1>
-<p>[~200 words]</p>
-<p>Clear summary adequately describing the results and putting them in context. Discussion of further questions and ways to continue investigation.</p>
+<p>This project examined temperature trends and urbanization changes in five counties in Western New York from 2001 to 2025. The results showed that most weather stations experienced warming during the four selected months. However, the warming rates were different across months and locations.</p>
+<p>I expected that weather stations with greater increases in impervious surfaces might show stronger warming trends. However, the results did not show a consistent positive relationship. July even showed a significant negative relationship between impervious surface changes and average temperature trends. This suggests that the relationship between urbanization and temperature change may be more complicated than expected. Other factors, such as local land cover, elevation, and distance from the Great Lakes, may also affect temperature trends.</p>
+<p>The comparison between TMIN and TMAX showed that minimum temperatures increased faster in January and April at most stations, while maximum temperatures increased faster in October. This suggests that daytime and nighttime temperature trends may be different across months.</p>
+<p>One limitation of this study is the small number of weather stations. In future work, I would like to include more stations and consider other environmental factors. I also plan to use more land cover data from different years to better understand the relationship between urbanization and local temperature changes.</p>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
-<p>All sources are cited in a consistent manner</p>
+<ol type="1">
+<li><p>National Oceanic and Atmospheric Administration (NOAA). (n.d.). Global Historical Climatology Network-Daily (GHCN-Daily). National Centers for Environmental Information. https://www.ncei.noaa.gov/pub/data/ghcn/daily/</p></li>
+<li><p>Multi-Resolution Land Characteristics Consortium (MRLC). (2026). Annual National Land Cover Database (NLCD): Fractional Impervious Surface. https://www.mrlc.gov/</p></li>
+<li><p>U.S. Census Bureau. (2024). 2024 TIGER/Line Shapefiles: County and Equivalent Entities. https://www.census.gov/geographies/mapping-files/time-series/geo/tiger-line-file.2024.html</p></li>
+</ol>
 
 
 </section>
