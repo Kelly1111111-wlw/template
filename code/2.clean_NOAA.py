@@ -116,8 +116,7 @@ stations_final = stations[stations["station_id"].isin(valid_stations)].copy()
 
 # merge county and station information(left join)
 monthly_final = monthly_final.merge(
-    stations_final[["station_id", "station_name", "county",
-                    "latitude", "longitude"]],
+    stations_final[["station_id", "station_name", "county", "latitude", "longitude"]],
     on="station_id",
     how="left"
 )

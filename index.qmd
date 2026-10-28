@@ -1,7 +1,7 @@
 ---
-title: "Seasonal Temperature Trends and Urbanization Relationships around Buffalo, NY (2001–2025)"
+title: "Seasonal Temperature Trends and Urbanization Relationships around Buffalo, NY(2001–2025)"
 author: Linwei Wu
-date: 09/16/2026
+date: 11/01/2026
 date-format: long
 ---
 
@@ -9,38 +9,43 @@ date-format: long
   Rising temperatures are a major concern under global climate change, but
 warming can also be influenced by local factors. Urbanization is one such factor, as
 the expansion of impervious surfaces such as roads, buildings, and parking lots may
-affect local temperatures. The five-county study area around Buffalo contains
-different levels of development, providing an opportunity to examine the relationship
-between warming and urbanization. This project will analyze temperature trends from
-2001 to 2025 and investigate whether they are associated with changes in
-urbanization.
-
+affect local temperatures. These surfaces can absorb and store heat, which may make 
+urban areas warmer than surrounding rural areas.
+  Western New York is an interesting area for studying these changes because it 
+includes both urban and rural areas. The study area includes five counties in Western 
+New York: Erie, Niagara, Chautauqua, Cattaraugus, and Allegany. These counties have 
+different levels of development, providing an opportunity to examine the relationship 
+between warming and urbanization. Temperature changes may also vary across different 
+months, and minimum and maximum temperatures may not increase at the same rate.
+  This project examines temperature trends in five counties in Western New York from 
+2001 to 2025. It focuses on three research questions:
+1. How did temperature trends change across four representative months: January, April, 
+July, and October?
+2. Did weather stations with greater increases in impervious surfaces show stronger 
+warming trends?
+3. How did minimum temperature (TMIN) trends compare with maximum temperature (TMAX) 
+trends across different months, and how did these differences vary with impervious 
+surface changes?
 
 # Materials and methods
-
-\[\~ 200 words\]
-
-Narrative: Clear narrative description of the data sources and methods. Includes data from at least two sources that were integrated / merged in R.
-
-Code: The code associated with the project is well organized and easy to follow. Demonstrates mastery of R graphics and functions.
-
-Data: The underlying data are publicly accessible via the web and downloaded/accessed within the Rmd script. If you want to use your own data, you must make it available on a website (e.g. Figshare) so that others are able to re-run your code.
-
-You can do bullets like this:
-
--   The first most important thing
--   The second most important thing
--   The third most important thing
-
-You can do numbers like this:
-
-1.  The first most important thing
-2.  The second most important thing
-3.  The third most important thing
-
-See <http://rmarkdown.rstudio.com/> for all the amazing things you can do.
-
-Here's my first code chunk.
+  This project uses three main datasets: temperature, impervious surface, and county 
+boundary data. Daily temperature records from 2001 to 2025 were downloaded from the 
+NOAA Global Historical Climatology Network-Daily (GHCN-Daily). County boundaries were 
+obtained from the U.S. Census Bureau to select weather stations within the five counties 
+in Western New York. Impervious surface data for 2001 and 2025 were obtained from the 
+National Land Cover Database (NLCD).
+  For the temperature data, I first cleaned the daily records and removed missing or 
+invalid values. Daily maximum temperature (TMAX) and minimum temperature (TMIN) were used 
+to calculate average temperature (TAVG). The daily data were then converted into monthly 
+averages. I kept months with at least 80% valid daily observations and stations with at 
+least 95% monthly completeness. January, April, July, and October were selected to represent 
+winter, spring, summer, and fall. Linear regression was used to calculate temperature trends 
+for each station and month from 2001 to 2025.
+  For the NLCD data, I created a 2 km buffer around each weather station and calculated the 
+mean impervious surface percentage for both years. The difference between 2025 and 2001 was 
+used to measure urbanization change.
+  Finally, I combined the temperature trends and impervious surface changes using station 
+IDs to examine their relationships.
 
 ```{r}
 x=3+4
