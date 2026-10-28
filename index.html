@@ -28,6 +28,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -169,6 +204,40 @@ ul.task-list li input[type="checkbox"] {
 <p>For the NLCD data, I created a 2 km buffer around each weather station and calculated the mean impervious surface percentage for both years. The difference between 2025 and 2001 was used to measure urbanization change.</p>
 <p>Finally, I combined the temperature trends and impervious surface changes using station IDs to examine their relationships.</p>
 <p>(Python was used to download and clean the data, calculate temperature trends, and process impervious surface data. R was used to analyze the relationships and create figures. All scripts are organized in the code/ folder, and the Readme.txt file explains the purpose and order of each script.)</p>
+</section>
+<section id="data" class="level1">
+<h1>Data</h1>
+<p>The temperature and impervious surface datasets were processed using Python. The processed CSV files are stored in the <code>data/processed/</code> folder. Here I use R to load and combine these datasets for further analysis.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load temperature trends from NOAA</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/processed/station_temperature_trends.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load impervious surface data from NLCD</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>imp <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/processed/station_impervious_change.csv"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the two datasets using station ID</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(temp, imp, <span class="at">by =</span> <span class="st">"station_id"</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first six rows</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 18
+  station_id  station_name.x county.x latitude longitude month season variable
+  &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;   
+1 USC00300183 ANGELICA       Allegany     42.3     -78.0     1 Winter TAVG    
+2 USC00300183 ANGELICA       Allegany     42.3     -78.0     1 Winter TMAX    
+3 USC00300183 ANGELICA       Allegany     42.3     -78.0     1 Winter TMIN    
+4 USC00300183 ANGELICA       Allegany     42.3     -78.0     4 Spring TAVG    
+5 USC00300183 ANGELICA       Allegany     42.3     -78.0     4 Spring TMAX    
+6 USC00300183 ANGELICA       Allegany     42.3     -78.0     4 Spring TMIN    
+# ℹ 10 more variables: n_years &lt;dbl&gt;, slope_c_per_year &lt;dbl&gt;,
+#   slope_c_per_decade &lt;dbl&gt;, p_value &lt;dbl&gt;, r_squared &lt;dbl&gt;,
+#   station_name.y &lt;chr&gt;, county.y &lt;chr&gt;, impervious_2001 &lt;dbl&gt;,
+#   impervious_2025 &lt;dbl&gt;, impervious_change &lt;dbl&gt;</code></pre>
+</div>
+</div>
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
