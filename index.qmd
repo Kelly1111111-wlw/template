@@ -60,6 +60,103 @@ head(df)
 
 # Results
 
+### Statistical Significance of Temperature Trends
+
+I used p-values to evaluate the statistical significance of temperature trends. A trend was considered statistically significant when the p-value was less than 0.05.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(knitr)
+
+df <- read_csv("data/processed/station_temperature_trends.csv", show_col_types = FALSE)
+# check significant temperature trends
+trend_summary <- df %>%
+  filter(variable %in% c("TAVG", "TMIN", "TMAX")) %>%
+  mutate(significant = p_value < 0.05, significant_warming = p_value < 0.05 & slope_c_per_decade > 0) %>%
+  group_by(variable, month) %>%
+  summarise(
+    total_stations = n(),
+    significant_trends = sum(significant, na.rm = TRUE),
+    significant_warming_stations = sum(
+      significant_warming, na.rm = TRUE
+    ),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    month = factor(
+      month,
+      levels = c(1, 4, 7, 10),
+      labels = c("January", "April", "July", "October")
+    )
+  )
+```
+
+#### Average Temperature (TAVG)
+
+```{r}
+#| label: tbl-tavg-significance
+#| echo: false
+#| tbl-cap: "Statistical significance of average temperature trends."
+
+trend_summary %>%
+  filter(variable == "TAVG") %>%
+  select(-variable) %>%
+  kable(
+    col.names = c(
+      "Month",
+      "Total Stations",
+      "Significant Trends",
+      "Significant Warming"
+    )
+  )
+```
+
+#### Minimum Temperature (TMIN)
+
+```{r}
+#| label: tbl-tmin-significance
+#| echo: false
+#| tbl-cap: "Statistical significance of minimum temperature trends."
+
+trend_summary %>%
+  filter(variable == "TMIN") %>%
+  select(-variable) %>%
+  kable(
+    col.names = c(
+      "Month",
+      "Total Stations",
+      "Significant Trends",
+      "Significant Warming"
+    )
+  )
+```
+
+#### Maximum Temperature (TMAX)
+
+```{r}
+#| label: tbl-tmax-significance
+#| echo: false
+#| tbl-cap: "Statistical significance of maximum temperature trends."
+
+trend_summary %>%
+  filter(variable == "TMAX") %>%
+  select(-variable) %>%
+  kable(
+    col.names = c(
+      "Month",
+      "Total Stations",
+      "Significant Trends",
+      "Significant Warming"
+    )
+  )
+```
+
+The results show that temperature trends were different across months. In January and April, none of the nine stations showed significant temperature trends. In July, five stations showed significant warming in TAVG, while four stations showed significant warming in both TMIN and TMAX. October had the most significant warming in TAVG (8 stations) and TMAX (9 stations), but only two stations showed significant warming in TMIN. Overall, significant warming was mainly observed in July and October, especially for maximum temperature in October.
+
 ![Figure 1. Average temperature trends across four representative months.](figures/Figure1_TAVG_Trends.png)
 Figure 1 shows the average temperature (TAVG) trends for four representative months from 2001 to 2025. Most weather stations showed warming trends, but the warming rates were different across months. October had the strongest warming, while April showed the weakest warming.
 
