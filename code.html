@@ -158,27 +158,27 @@ ul.task-list li input[type="checkbox"] {
 <section id="python-scripts" class="level2">
 <h2 class="anchored" data-anchor-id="python-scripts">Python Scripts</h2>
 <section id="down_noaa.py" class="level3">
-<h3 class="anchored" data-anchor-id="down_noaa.py">1. 1.down_NOAA.py</h3>
+<h3 class="anchored" data-anchor-id="down_noaa.py">1.down_NOAA.py</h3>
 <p>Downloads county boundaries and NOAA weather station data. Selects stations within five counties in Western New York.</p>
 <p><strong>Output:</strong> <code>wny_counties.gpkg</code>, <code>wny_candidate_stations.csv</code>, and NOAA <code>.dly</code> files.</p>
 </section>
 <section id="clean_noaa.py" class="level3">
-<h3 class="anchored" data-anchor-id="clean_noaa.py">2. 2.clean_NOAA.py</h3>
+<h3 class="anchored" data-anchor-id="clean_noaa.py">2.clean_NOAA.py</h3>
 <p>Cleans daily temperature records and calculates monthly TAVG, TMAX, and TMIN. Keeps months with at least 80% valid daily data and stations with at least 95% valid months.</p>
 <p><strong>Output:</strong> <code>monthly_temperature_2001_2025.csv</code>, <code>selected_stations.csv</code>, and <code>station_completeness.csv</code>.</p>
 </section>
 <section id="temp_trends.py" class="level3">
-<h3 class="anchored" data-anchor-id="temp_trends.py">3. 3.temp_trends.py</h3>
+<h3 class="anchored" data-anchor-id="temp_trends.py">3.temp_trends.py</h3>
 <p>Selects January, April, July, and October to represent winter, spring, summer, and fall. Uses linear regression to calculate temperature trends for stations with at least 20 years of data.</p>
 <p><strong>Output:</strong> <code>season_temperature.csv</code> and <code>station_temperature_trends.csv</code>.</p>
 </section>
 <section id="process_nlcd.py" class="level3">
-<h3 class="anchored" data-anchor-id="process_nlcd.py">4. 4.process_NLCD.py</h3>
+<h3 class="anchored" data-anchor-id="process_nlcd.py">4.process_NLCD.py</h3>
 <p>Creates 2 km buffers around weather stations. Calculates mean impervious surface percentages for 2001 and 2025 and their changes.</p>
 <p><strong>Output:</strong> <code>station_impervious_change.csv</code>, station buffers, and reprojected raster files.</p>
 </section>
 <section id="merge_data.py" class="level3">
-<h3 class="anchored" data-anchor-id="merge_data.py">5. 5.merge_data.py</h3>
+<h3 class="anchored" data-anchor-id="merge_data.py">5.merge_data.py</h3>
 <p>Combines temperature trends and impervious surface changes using station IDs.</p>
 <p><strong>Output:</strong> <code>temperature_impervious_merged.csv</code>.</p>
 </section>
@@ -186,27 +186,27 @@ ul.task-list li input[type="checkbox"] {
 <section id="r-scripts" class="level2">
 <h2 class="anchored" data-anchor-id="r-scripts">R Scripts</h2>
 <section id="tavg_trends.r" class="level3">
-<h3 class="anchored" data-anchor-id="tavg_trends.r">6. 6.TAVG_trends.R</h3>
+<h3 class="anchored" data-anchor-id="tavg_trends.r">6.TAVG_trends.R</h3>
 <p>Compares average temperature trends across four representative months.</p>
 <p><strong>Output:</strong> Figure 1 – Temperature Trends.</p>
 </section>
 <section id="spatical_temp_trends.r" class="level3">
-<h3 class="anchored" data-anchor-id="spatical_temp_trends.r">7. 7.spatical_temp_trends.R</h3>
+<h3 class="anchored" data-anchor-id="spatical_temp_trends.r">7.spatical_temp_trends.R</h3>
 <p>Maps weather station temperature trends and impervious surface changes in Western New York.</p>
 <p><strong>Output:</strong> Figure 2 – Temperature and Urbanization Map.</p>
 </section>
 <section id="impervious_change.r" class="level3">
-<h3 class="anchored" data-anchor-id="impervious_change.r">8. 8.impervious_change.R</h3>
+<h3 class="anchored" data-anchor-id="impervious_change.r">8.impervious_change.R</h3>
 <p>Compares impervious surface percentages in 2001 and 2025 for each weather station.</p>
 <p><strong>Output:</strong> Figure 3 – Impervious Surface Change.</p>
 </section>
 <section id="regress_urban_temp_trends.r" class="level3">
-<h3 class="anchored" data-anchor-id="regress_urban_temp_trends.r">9. 9.regress_urban_temp_trends.R</h3>
+<h3 class="anchored" data-anchor-id="regress_urban_temp_trends.r">9.regress_urban_temp_trends.R</h3>
 <p>Uses linear regression to examine the relationship between impervious surface changes and TAVG trends.</p>
 <p><strong>Output:</strong> Figure 4 – Urbanization and Temperature Regression, and <code>urbanization_regression_results.csv</code>.</p>
 </section>
 <section id="tmax_tmin_trends.r" class="level3">
-<h3 class="anchored" data-anchor-id="tmax_tmin_trends.r">10. 10.Tmax_Tmin_trends.R</h3>
+<h3 class="anchored" data-anchor-id="tmax_tmin_trends.r">10.Tmax_Tmin_trends.R</h3>
 <p>Compares TMIN and TMAX temperature trends for each representative month.</p>
 <p><strong>Output:</strong> Figure 5 – TMIN vs.&nbsp;TMAX Trends, and comparison CSV files.</p>
 </section>
