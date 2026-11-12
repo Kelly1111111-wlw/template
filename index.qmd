@@ -1,5 +1,5 @@
 ---
-title: "Seasonal Temperature Trends and Urbanization Relationships around Buffalo, NY(2001–2025)"
+title: "Seasonal Temperature Trends and Urbanization Relationships around Buffalo, NY(2001–2025)" (consider rewording part of the title to make it clear that it is about studying the impact of impervious surfaces on seasonal temperatures in urban/rural WNY)
 author: Linwei Wu
 date: 11/01/2026
 date-format: long
@@ -11,19 +11,19 @@ format:
 # Introduction
 
 Rising temperatures are a major concern under global climate change, but warming can also be influenced by local
-factors. Urbanization is one such factor, as the expansion of impervious surfaces such as roads, buildings, and parking lots may affect local temperatures. These surfaces can absorb and store heat, which may make urban areas warmer than surrounding rural areas.
+factors. Urbanization is one such factor, as the expansion of impervious surfaces such as roads, buildings, and parking lots may affect local temperatures. These surfaces can absorb and store heat, which may make urban areas warmer than surrounding rural areas. (information source?)
 
-Western New York is an interesting area for studying these changes because it includes both urban and rural areas. The study area includes five counties in Western New York: Erie, Niagara, Chautauqua, Cattaraugus, and Allegany. These counties have different levels of development, providing an opportunity to examine the relationship between warming and urbanization. Temperature changes may also vary across different months, and minimum and maximum temperatures may not increase at the same rate.
+Western New York is an interesting area for studying these changes because it includes both urban and rural areas.(what about this appeals to your project? I would suggest including some background research or news articles that inspired you to look at WNY) The study area includes five counties in Western New York: Erie, Niagara, Chautauqua, Cattaraugus, and Allegany. These counties have different levels of development, providing an opportunity to examine the relationship between warming and urbanization.(I agree!) Temperature changes may also vary across different months, and minimum and maximum temperatures may not increase at the same rate.(This is a very interesting point!)
 
 This project examines temperature trends in five counties in Western New York from 2001 to 2025. It focuses on three research questions:
 
 1. How did temperature trends change across four representative months: January, April, July, and October?
 
-2. Did weather stations with greater increases in impervious surfaces show stronger warming trends?
+2. Did weather stations with greater increases in impervious surfaces show stronger warming trends?(I would suggest adding a subsection or callouts in your report where you provide your definition for some of these topics. eg: urbanization, warming trends)
 
-3. How did minimum temperature (TMIN) trends compare with maximum temperature (TMAX) trends across different months, and how did these differences vary with impervious surface changes?
+3. How did minimum temperature (TMIN) trends compare with maximum temperature (TMAX) trends across different months, and how did these differences vary with impervious surface changes?(space-time insights are always great!)
 
-# Materials and methods
+# Materials and methods (your methodology is super clear and helpful to understand your data outputs. great work!)
 
 This project uses three main datasets: temperature, impervious surface, and county boundary data. Daily temperature records from 2001 to 2025 were downloaded from the NOAA Global Historical Climatology Network-Daily (GHCN-Daily). County boundaries were obtained from the U.S. Census Bureau to select weather stations within the five counties in Western New York. Impervious surface data for 2001 and 2025 were obtained from the National Land Cover Database (NLCD).
 
