@@ -23,6 +23,8 @@ This project examines temperature trends in five counties in Western New York fr
 
 3. How did minimum temperature (TMIN) trends compare with maximum temperature (TMAX) trends across different months, and how did these differences vary with impervious surface changes?
 
+>I would assume that the chosen months were seleceted to represent each season, but otherwise this is a really interesting topic.
+
 # Materials and methods
 
 This project uses three main datasets: temperature, impervious surface, and county boundary data. Daily temperature records from 2001 to 2025 were downloaded from the NOAA Global Historical Climatology Network-Daily (GHCN-Daily). County boundaries were obtained from the U.S. Census Bureau to select weather stations within the five counties in Western New York. Impervious surface data for 2001 and 2025 were obtained from the National Land Cover Database (NLCD).
@@ -34,6 +36,9 @@ For the NLCD data, I created a 2 km buffer around each weather station and calcu
 Finally, I combined the temperature trends and impervious surface changes using station IDs to examine their relationships.
 
 (Python was used to download and clean the data, calculate temperature trends, and process impervious surface data. R was used to analyze the relationships and create figures. All scripts are organized in the code/ folder, and the Readme.txt file explains the purpose and order of each script.)
+
+
+>I used the Climate Data store to obtain monthly-averaged netCDF files directly for my own final project, without having to use python for extraction and averaging. Obviously what you did works well too, and I have not seen a project use both languages before!
 
 # Data
 
@@ -172,15 +177,21 @@ Figure 4 shows the relationship between impervious surface changes and TAVG tren
 ![Figure 5. Comparison of TMIN and TMAX trends.](figures/Figure5_TMIN_vs_TMAX_Trends.png)
 Figure 5 compares TMIN and TMAX trends across four months. In January and April, TMIN increased faster than TMAX at most stations. July showed mixed results, while October showed the opposite pattern. The circle sizes also show impervious surface changes, but there is no clear pattern between these changes and the differences in TMIN and TMAX trends.
 
+>This is interesting. I feel like the trends are consistent with my expereinces, as spring feels much colder than usual while late summer and especially fall have felt much warmer in recent years. Using Buffalo and the surrounding towns is tricky for a LULC change analysis, as this area (and especially smaller towns outside) have been declining in population or growing slowly. LULC changes to developed areas are therefore quite stagnant (as seen first-hand in the LULC change figure), and in some cases a reversal may be present where old abandoned areas are being reclaimed by nature. This analysis would probably work really well on massive growing cities such as those in the Sunbelt (Dallas, Charlotte, Orlando, etc.)
+
 # Conclusions
 
 This project examined temperature trends and urbanization changes in five counties in Western New York from 2001 to 2025. The results showed that most weather stations experienced warming during the four selected months. However, the warming rates were different across months and locations.
 
 I expected that weather stations with greater increases in impervious surfaces might show stronger warming trends. However, the results did not show a consistent positive relationship. July even showed a significant negative relationship between impervious surface changes and average temperature trends. This suggests that the relationship between urbanization and temperature change may be more complicated than expected. Other factors, such as local land cover, elevation, and distance from the Great Lakes, may also affect temperature trends.
 
+>This is correct. The Great Lakes are very good at preventing extreme temperatures from occuring, which is why Buffalo has not recorded 100 deg F yet. Areas to the south are located away from the Great Lakes and in the Allegheny Plateau, where the towns are much higher in elevation (1500+ ft vs 600 ft) and are often located in narrow valleys, which absolutely affect max and min temperatures.
+
 The comparison between TMIN and TMAX showed that minimum temperatures increased faster in January and April at most stations, while maximum temperatures increased faster in October. This suggests that daytime and nighttime temperature trends may be different across months.
 
 One limitation of this study is the small number of weather stations. In future work, I would like to include more stations and consider other environmental factors. I also plan to use more land cover data from different years to better understand the relationship between urbanization and local temperature changes.
+
+>Nice work!
 
 # References
 
